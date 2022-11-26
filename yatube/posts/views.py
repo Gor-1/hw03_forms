@@ -1,13 +1,9 @@
-from django.core.paginator import Paginator
-# posts/views.py
-from django.shortcuts import redirect, render, get_object_or_404
-from django.urls import reverse_lazy
-# Импортируем модель, чтобы обратиться к ней
-from .models import Post, Group, User
-# импортируем форма для постов
-from .forms import PostForm
-from django.contrib.auth import get_user
 
+from .forms import PostForm
+from django.urls import reverse_lazy
+from django.shortcuts import redirect, render, get_object_or_404
+from django.core.paginator import Paginator
+from .models import Post, Group, User
 
 # кольво постов
 PUB_VALUE = 10
