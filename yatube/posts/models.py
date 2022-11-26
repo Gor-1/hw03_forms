@@ -14,10 +14,10 @@ class Group(models.Model):
     slug = models.SlugField(
         max_length=255,
         unique=True,
-        verbose_name='URL'
+        verbose_name='Ссылка'
     )
     description = models.TextField(
-        verbose_name='Group description'
+        verbose_name='Описание группы'
     )
 
     def __str__(self) -> str:
@@ -25,12 +25,16 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField()
-    pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(verbose_name='Текст')
+    pub_date = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name='Дата публикации'
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='posts'
+        related_name='posts',
+        verbose_name='Автор'
     )
 
     group = models.ForeignKey(
@@ -38,7 +42,8 @@ class Post(models.Model):
         blank=True,
         null=True,
         related_name='group_list',
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
+        verbose_name='Группа'
     )
 
     class Meta:
